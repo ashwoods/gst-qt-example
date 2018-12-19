@@ -37,10 +37,12 @@ RUN set -ex \
 RUN set -ex \
     && pip3 install --upgrade pip wheel setuptools
 
-
 WORKDIR /src
 RUN git clone https://gitlab.freedesktop.org/gstreamer/gst-examples.git
 
 WORKDIR /src/gst-examples/playback/player/qt
 RUN qmake
 RUN make
+
+WORKDIR /
+COPY player.py .
